@@ -16,3 +16,37 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: local("PlusJakartaSans"),
+   url("./fonts/Plus Jakarta Sans/PlusJakartaSans-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Made Outer Sans";
+  src: local("MadeOuterSans"),
+   url("./fonts/MADE Outer Sans/MADE Outer Sans Regular PERSONAL USE.otf") format("truetype");
+}
+
+:root {
+  --font-base: 'Made Outer Sans';
+
+  --primary-color: #0073ff;
+  --secondary-color: #00ff0d;
+  --black-color: #000000;
+  --gray-color: #383838;
+  --lightGray-color: #A4A4A4;
+  --table-bag-color: #FBFCFF;
+  --button-color: #5DAFEF;
+  --white-color: #FEFEFE;
+  --white-sec-color: #FAFAFA;
+  --blue-color: #1B87DC;
+}
+
+.primary-button-success {
+  background-color: var(--primary-color);
+}
+
+/* color
+size */
