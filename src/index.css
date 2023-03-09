@@ -30,23 +30,13 @@ code {
 }
 
 :root {
-  --font-base: 'Made Outer Sans';
+  --font-header: 'Made Outer Sans';
+  --font-paragraph: 'Plus Jakarta Sans';
 
-  --primary-color: #0073ff;
-  --secondary-color: #00ff0d;
-  --black-color: #000000;
-  --gray-color: #383838;
-  --lightGray-color: #A4A4A4;
-  --table-bag-color: #FBFCFF;
-  --button-color: #5DAFEF;
-  --white-color: #FEFEFE;
-  --white-sec-color: #FAFAFA;
-  --blue-color: #1B87DC;
+  --primary-color: #0B83D9;
+  --danger-color: #D0021B;
 }
 
-.primary-button-success {
-  background-color: var(--primary-color);
+button {
+  font-family: var(--font-paragraph);
 }
-
-/* color
-size */

@@ -1,6 +1,7 @@
 import logo from './logo-plabs-full.png';
 import './App.css';
-import Button from './components/Button';
+// import Button from './components/Button';
+import { Button, OutlineButton } from './components/Button';
 
 // function App() {
 //   return (
@@ -19,11 +20,14 @@ function App() {
         Welcome!
       </p>
       <p className="text-gray-500 text-lg">
-        React and Tailwind CSS in action
+        System Design
       </p>
 
-      <button className="primary-button">asdad</button>
-      <Button color="primary-button-success" name="blue" size="medium"></Button>
+      {/* <button className="primary-button" onClick={() => console.log("Primary Button")}>asdad</button> */}
+      <Button variant="button-primary" onClick={() => console.log("Primary Button")}>Primary Button</Button>
+      <Button variant="button-danger" onClick={() => console.log("Danger Button")}>Danger Button</Button>
+      <OutlineButton variant="button-primary" onClick={() => console.log("Outline Primary Button")}>Outline Primary Button</OutlineButton>
+      <OutlineButton variant="button-danger" onClick={() => console.log("Outline Danger Button")}>Outline Danger Button</OutlineButton>
     </div>
   );
 }
