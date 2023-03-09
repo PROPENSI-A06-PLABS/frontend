@@ -40,3 +40,7 @@ code {
 button {
   font-family: var(--font-paragraph);
 }
+
+body {
+  background-color: white;
+}
