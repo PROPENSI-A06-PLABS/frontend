@@ -48,20 +48,20 @@ function Login() {
 
     return (
         
-        <div className="grid grid-cols-2 bg-primarywhite">
+        <div className="grid grid-cols-2">
             <div>
                 <img className="lg:w-36 lg:mt-8 lg:ml-10 md:w-36 md:mt-8 md:ml-10 mt-4 ml-5 w-24" src={plabsLogo}></img>
                 <div className="md:justify-center flex items-center md:h-4/6">
                     <div className="grid grid-flow-row auto-rows-max">
-                        <div className="">
+                        {/* <div className=""> */}
                             <h1 className="text-2xl font-MadeOuterSans">Good to see you again!</h1>
-                        </div>
+                        {/* </div> */}
 
                         <div className="mt-10">
                             <form onSubmit={postLogin}>
                                 <TextInput label="Email "placeholder="Input email" required value={email} onChange={(event) => setEmail(event.target.value)}></TextInput>
                                 {/* <input placeholder="Input email" required value={email} onChange={(event) => setEmail(event.target.value)} type="text"></input> */}
-                                <TextInput label="Password" placeholder="Input password" required value={password} onChange={(event) => setPassword(event.target.value)}></TextInput>
+                                <TextInput label="Password" type={"password"} placeholder="Input password" required value={password} onChange={(event) => setPassword(event.target.value)}></TextInput>
                                 {/* <input placeholder="Input password" required value={password} onChange={(event) => setPassword(event.target.value)} type="text"></input> */}
                                 <div className="flex item-center justify-center">
                                     <Button variant="button-primary" className={"w-32 mt-4"} type={"submit"}>Login</Button>
@@ -71,9 +71,10 @@ function Login() {
                     </div>   
                 </div>
             </div>
-            <div className="justify-items-end">
-                <img className="" src={plabsScreen}></img>
-            </div>
+            {/* <div class="bg-contain bg-center" style={{backgroundImage: `url(${plabsScreen})`}}></div> */}
+            {/* <div className="h-screen w-screen"> */}
+                <img className="h-screen w-screen" src={plabsScreen}></img>
+            {/* </div> */}
         </div>
     );   
 }
