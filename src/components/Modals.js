@@ -1,7 +1,5 @@
 import  React , {useState } from 'react';
 
-
-
 const WarningModal = ({label, description, leftbutton, rightbutton}) => {
     const [showModal, setShowModal] = useState(true);
 

@@ -9,6 +9,7 @@ import hantop from '../img/hantop.png';
 import plabsScreen from '../img/plabs-screen.svg';
 import plabsLogo from '../img/plabs-logo.svg';
 import { Button } from "../components/Button";
+import { TextInput } from "../components/Input";
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -25,7 +26,7 @@ function Login() {
     //     ).catch(error => console.error(error))
     // }
 
-    const postLogin = async (e) => { //IMPLEMENT AXIOS
+    const postLogin = async (e) => {
         e.preventDefault();
 
         const userData = {
@@ -45,10 +46,6 @@ function Login() {
         }
     }
 
-    // useEffect(() => {
-    //     getResponse()
-    //   })
-
     return (
         
         <div className="grid grid-cols-2 gap-8">
@@ -59,14 +56,15 @@ function Login() {
                         <div className="">
                             <h1 className="text-2xl font-MadeOuterSans">Good to see you again!</h1>
                         </div>
-                        <div className="flex justify-center mt-10">
+
+                        <div className="mt-10">
                             <form onSubmit={postLogin}>
-                                <input placeholder="Input email" required value={email} onChange={(event) => setEmail(event.target.value)} type="text"></input>
-                                <br></br>
-                                <input placeholder="Input password" required value={password} onChange={(event) => setPassword(event.target.value)} type="text"></input>
-                                <br></br>
+                                <TextInput label="Email "placeholder="Input email" required value={email} onChange={(event) => setEmail(event.target.value)}></TextInput>
+                                {/* <input placeholder="Input email" required value={email} onChange={(event) => setEmail(event.target.value)} type="text"></input> */}
+                                <TextInput label="Password" placeholder="Input password" required value={password} onChange={(event) => setPassword(event.target.value)}></TextInput>
+                                {/* <input placeholder="Input password" required value={password} onChange={(event) => setPassword(event.target.value)} type="text"></input> */}
                                 <div className="flex item-center justify-center">
-                                    <Button variant="button-primary" className={"w-32"} type={"submit"}>Login</Button>
+                                    <Button variant="button-primary" className={"w-32 mt-4"} type={"submit"}>Login</Button>
                                 </div>
                             </form>
                         </div>
