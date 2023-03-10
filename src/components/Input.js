@@ -8,21 +8,22 @@ const TextInput = ({
     className,
     id,
     value,
+    type = 'text',
     onChange,
     children}) => {
-        if (variant == "") {
-            variant = ""
-        }
-        else if (variant == "") {
-            variant = "r"
-        }
+        // if (variant == "") {
+        //     variant = ""
+        // }
+        // else if (variant == "") {
+        //     variant = "r"
+        // }
         return( 
         <div>
             <label className="text-gray-400 text-sm">
                 {label}
             </label>
             <input 
-                type='text'
+                type={type}
                 variant={variant}
                 placeholder={placeholder}
                 className={`${className} ${variant} appearance-none border rounded w-full mb-3 py-3.5 px-3 text-gray-700 text-sm font-PlusJakartaSans leading-tight focus:outline-none focus:shadow-outline`} 

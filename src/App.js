@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import SystemDesign from './pages/SystemDesign';
 
 import PrivateRoute from './components/PrivateRoute';
+import Sidebar from './components/Navbar';
 
 function App() {
   useEffect(() => {
@@ -17,12 +18,19 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/design" element={
-          <PrivateRoute>
-            <SystemDesign/>
-          </PrivateRoute>
-        }/>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/design" element={
+            <PrivateRoute>
+              <Sidebar>
+                <SystemDesign/>
+              </Sidebar>
+            </PrivateRoute>
+          }/>
+          <Route path="/design-clean" element={
+            <PrivateRoute>
+              <SystemDesign/>
+            </PrivateRoute>
+          }/>
       </Routes>
     </div>
   );

@@ -18,6 +18,7 @@ module.exports = {
             'darkgrey' : '#666E80',
             'grey' : '#98A1B3',
             'lightgrey' : '#E1E2E6',
+            'toscagreen' : '#9BD4D7'
           },
         },
         screens: {
