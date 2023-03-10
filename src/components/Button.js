@@ -19,7 +19,7 @@ const Button = ({
             <button 
                 type={type}
                 variant={variant}
-                className={`${className} ${variant} rounded-xl shadow p-3 m-2 text-xs font-bold text-white`} 
+                className={`${className} ${variant}  inline-flex w-full justify-center rounded-[25px]  px-3 py-2 hover:brightness-90 shadow text-xs font-bold text-white sm:w-[129px]`} 
                 onClick={onClick}
                 id={id}
                 >{children}
@@ -46,7 +46,7 @@ const OutlineButton = ({
             <button 
                 type={type}
                 variant={variant}
-                className={`${className} ${variant} rounded-xl shadow p-3 m-2 text-xs font-boldbg-white border-2`} 
+                className={`${className} ${variant}  inline-flex w-full justify-center rounded-[25px] hover:brightness-90 shadow px-3 py-2 text-xs font-bold bg-white border-[1px] sm:w-[129px]`} 
                 onClick={onClick}
                 id={id}
                 >{children}
