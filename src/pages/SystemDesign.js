@@ -1,6 +1,6 @@
 import '../App.css';
 import { Button, OutlineButton } from '../components/Button';
-
+import {WarningModal, ConfirmModal} from '../components/Modals';
 
 function SystemDesign() {
   return (
@@ -17,6 +17,7 @@ function SystemDesign() {
       <Button variant="button-danger" onClick={() => console.log("Danger Button")}>Danger Button</Button>
       <OutlineButton variant="button-primary" onClick={() => console.log("Outline Primary Button")}>Outline Primary Button</OutlineButton>
       <OutlineButton variant="button-danger" onClick={() => console.log("Outline Danger Button")}>Outline Danger Button</OutlineButton>
+      <ConfirmModal label='Confirmation' description='Are you sure you want to change employee status?' rightbutton='Change' leftbutton='Cancel'/>
     </div>
   );
 }
