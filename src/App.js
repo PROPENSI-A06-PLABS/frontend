@@ -7,7 +7,6 @@ import { useState, useEffect } from "react";
 import Login from './pages/Login';
 import SystemDesign from './pages/SystemDesign';
 
-import axios from 'axios';
 import PrivateRoute from './components/PrivateRoute';
 
 function App() {

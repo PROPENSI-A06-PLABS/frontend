@@ -7,7 +7,7 @@ const PrivateRoute = ({children }) => {
     const token = localStorage.getItem("token")
     const { decodedToken, isExpired } = useJwt(token);
     // const [validateToken, setValidateToken] = useState(null);
-    let validateToken = false;
+    // let validateToken = false;
 
     if (!token) {
         return <Navigate to="/login" replace />;
@@ -31,6 +31,7 @@ const PrivateRoute = ({children }) => {
     if (isExpired) {
         return <Navigate to="/login" replace />;
     }
+    //refresh jika token sisa brp menit
     return children;
 };
 
