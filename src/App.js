@@ -11,17 +11,8 @@ import axios from 'axios';
 import PrivateRoute from './components/PrivateRoute';
 
 function App() {
-  const [isLoggedIn, setisLoggedIn] = useState(null);
-
-  const getResponse = () => { //IMPLEMENT AXIOS
-      axios.get('/validate').then((response) => {
-          setisLoggedIn(true)
-      }
-      ).catch(error => setisLoggedIn(false))
-  }
-
   useEffect(() => {
-    getResponse()
+    // getResponse()
   })
 
   return (
@@ -29,9 +20,9 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login/>}/>
         <Route path="/design" element={
-          // <PrivateRoute isLoggedIn={isLoggedIn}>
+          <PrivateRoute>
             <SystemDesign/>
-          // {/* </PrivateRoute> */}
+          </PrivateRoute>
         }/>
       </Routes>
     </div>

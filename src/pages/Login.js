@@ -35,8 +35,10 @@ function Login() {
         console.log(userData);
 
         try {
-            const response = await axios.post('/login', userData, { withCredentials: true });
+            // const response = await axios.post('/login', userData, { withCredentials: true });
+            const response = await axios.post('/login', userData);
             console.log(response.data);
+            localStorage.setItem("token", response.data.token)
             navigate('/design')
         } catch (error) {
             console.error(error);
