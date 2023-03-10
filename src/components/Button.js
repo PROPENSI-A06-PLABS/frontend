@@ -19,7 +19,7 @@ const Button = ({
             <button 
                 type={type}
                 variant={variant}
-                className={`${className} ${variant}  inline-flex w-full justify-center rounded-[25px]  px-3 py-2 hover:brightness-90 shadow text-xs font-bold text-white sm:w-[129px]`} 
+                className={`${className} ${variant}  inline-flex w-full justify-center rounded-[25px] px-3 py-2 hover:brightness-90 shadow text-xs font-bold text-white sm:w-[129px]`} 
                 onClick={onClick}
                 id={id}
                 >{children}
