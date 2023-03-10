@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
+    content: [
+      "./src/**/*.{html,js,jsx,ts,tsx}",
+      'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'
+  ],
     theme: {
         fontFamily: {
           'PlusJakartaSans': ['"Plus Jakarta Sans"'],
@@ -9,7 +12,12 @@ module.exports = {
         extend: {
           colors: {
             'primary': '#0B83D9',
-            'danger': '#D0021B'
+            'danger': '#D0021B',
+            'black': '#191919',
+            'primarywhite' : '#FAFAFA',
+            'darkgrey' : '#666E80',
+            'grey' : '#98A1B3',
+            'lightgrey' : '#E1E2E6',
           },
         },
         screens: {
@@ -18,5 +26,7 @@ module.exports = {
           'lg': '1440px',
         },
     },
-    plugins: [],
+    plugins: [
+      require('flowbite/plugin')
+    ],
 };

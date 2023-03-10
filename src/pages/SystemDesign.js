@@ -1,10 +1,10 @@
 import '../App.css';
-import { Button, OutlineButton } from '../components/Button';
-import {WarningModal, ConfirmModal} from '../components/Modals';
+import { Button, OutlineButton,WarningModal, ConfirmModal,FileInput, DropFileInput  } from '../components';
 
 function SystemDesign() {
   return (
-    <div className="container mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10">
+    <div className=' w-screen h-screen bg-primarywhite'>
+    <div className="container mx-auto bg-white rounded-[25px] shadow border p-8 m-10">
       <p className="text-3xl text-gray-700 font-bold mb-5">
         Welcome!
       </p>
@@ -17,7 +17,10 @@ function SystemDesign() {
       <Button variant="button-danger" onClick={() => console.log("Danger Button")}>Danger Button</Button>
       <OutlineButton variant="button-primary" onClick={() => console.log("Outline Primary Button")}>Outline Primary Button</OutlineButton>
       <OutlineButton variant="button-danger" onClick={() => console.log("Outline Danger Button")}>Outline Danger Button</OutlineButton>
+      <FileInput title='Contract' description='SVG, PNG, JPG (MAX 4MB)' />
+      <DropFileInput description='Upload photos here'/>
       <ConfirmModal label='Confirmation' description='Are you sure you want to change employee status?' rightbutton='Change' leftbutton='Cancel'/>
+    </div>
     </div>
   );
 }

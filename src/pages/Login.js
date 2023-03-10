@@ -48,10 +48,10 @@ function Login() {
 
     return (
         
-        <div className="grid grid-cols-2 gap-8">
+        <div className="grid grid-cols-2 bg-primarywhite">
             <div>
                 <img className="lg:w-36 lg:mt-8 lg:ml-10 md:w-36 md:mt-8 md:ml-10 mt-4 ml-5 w-24" src={plabsLogo}></img>
-                <div className="md:justify-center md:flex md:items-center md:h-5/6 md:ml-0 sm:3/6">
+                <div className="md:justify-center flex items-center md:h-4/6">
                     <div className="grid grid-flow-row auto-rows-max">
                         <div className="">
                             <h1 className="text-2xl font-MadeOuterSans">Good to see you again!</h1>
@@ -71,9 +71,9 @@ function Login() {
                     </div>   
                 </div>
             </div>
-            {/* <div className=""> */}
-                <img className="h-screen w-screen lg:visible invisible" src={plabsScreen}></img>
-            {/* </div> */}
+            <div className="justify-items-end">
+                <img className="" src={plabsScreen}></img>
+            </div>
         </div>
     );   
 }
