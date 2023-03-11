@@ -1,11 +1,11 @@
 import  React , {useState } from 'react';
 
-const WarningModal = ({label, description, leftbutton, rightbutton}) => {
-    const [showModal, setShowModal] = useState(true);
+const WarningModal = ({label, description, leftbutton, rightbutton, onClickRight, onClickLeft}) => {
+    // const [showModal, setShowModal] = useState(true);
 
-  return showModal ? (
+  return (
     <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" onClick={() => setShowModal(false)}></div>
+    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
     <div class="fixed inset-0 z-10 overflow-y-auto">
         <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
@@ -28,14 +28,14 @@ const WarningModal = ({label, description, leftbutton, rightbutton}) => {
             </div>
             </div>
             <div class="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-            <button type="button" class="inline-flex w-full justify-center rounded-[25px] bg-danger px-3 py-2 text-xs font-bold text-white shadow-sm hover:brightness-90 sm:ml-3 sm:w-[129px]" onClick={() => setShowModal(false)}>{rightbutton}</button>
-            <button type="button" class="inline-flex w-full justify-center text-primary rounded-[25px] bg-white px-3 py-2 text-xs font-bold shadow-sm border-primary border-[1px] hover:brightness-90 sm:mt-0 sm:w-[129px]" onClick={() => setShowModal(false)}>{leftbutton}</button>
+            <button type="button" class="inline-flex w-full justify-center rounded-[25px] bg-danger px-3 py-2 text-xs font-bold text-white shadow-sm hover:brightness-90 sm:ml-3 sm:w-[129px]" onClick={onClickRight}>{rightbutton}</button>
+            <button type="button" class="inline-flex w-full justify-center text-primary rounded-[25px] bg-white px-3 py-2 text-xs font-bold shadow-sm border-primary border-[1px] hover:brightness-90 sm:mt-0 sm:w-[129px]" onClick={onClickLeft}>{leftbutton}</button>
             </div>
         </div>
         </div>
     </div>
     </div> 
-    ) : null ;
+    );
 };
 
 const ConfirmModal = ({label, description, leftbutton, rightbutton}) => {
