@@ -1,3 +1,4 @@
+import { Dropdown } from 'flowbite';
 import '../App.css';
 import { Button, OutlineButton,WarningModal, ConfirmModal,FileInput, DropFileInput  } from '../components';
 
@@ -20,6 +21,7 @@ function SystemDesign() {
         <FileInput title='Contract' description='SVG, PNG, JPG (MAX 4MB)' />
         <DropFileInput description='Upload photos here'/>
         <ConfirmModal label='Confirmation' description='Are you sure you want to change employee status?' rightbutton='Change' leftbutton='Cancel'/>
+        <Dropdown></Dropdown>
       </div>
     </div>
   );
