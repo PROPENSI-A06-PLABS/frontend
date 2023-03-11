@@ -10,11 +10,13 @@ import plabsScreen from '../img/plabs-screen.svg';
 import plabsLogo from '../img/plabs-logo.svg';
 import { Button } from "../components/Button";
 import { TextInput } from "../components/Input";
+import { Label } from "flowbite-react";
 
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [user, setUser] = useState("");
+    const [error,setError]=useState();
 
     let navigate = useNavigate();
 
@@ -40,8 +42,12 @@ function Login() {
             const response = await axios.post('/login', userData);
             console.log(response.data);
             localStorage.setItem("token", response.data.token)
+            localStorage.setItem("userName", response.data.user.Name)
+            localStorage.setItem("userRole", response.data.user.Role)
+            localStorage.setItem("userId", response.data.user.Id)
             navigate('/design')
         } catch (error) {
+            setError('Invalid Username or Password!')
             console.error(error);
         }
     }
@@ -53,19 +59,19 @@ function Login() {
                 <img className="lg:w-36 lg:mt-8 lg:ml-10 md:w-36 md:mt-8 md:ml-10 mt-4 ml-5 w-24" src={plabsLogo}></img>
                 <div className="md:justify-center flex items-center md:h-4/6">
                     <div className="grid grid-flow-row auto-rows-max">
-                        {/* <div className=""> */}
-                            <h1 className="text-2xl font-MadeOuterSans">Good to see you again!</h1>
-                        {/* </div> */}
+                        <h1 className="text-2xl font-MadeOuterSans">Good to see you again!</h1>
 
                         <div className="mt-10">
                             <form onSubmit={postLogin}>
-                                <TextInput label="Email "placeholder="Input email" required value={email} onChange={(event) => setEmail(event.target.value)}></TextInput>
-                                {/* <input placeholder="Input email" required value={email} onChange={(event) => setEmail(event.target.value)} type="text"></input> */}
-                                <TextInput label="Password" type={"password"} placeholder="Input password" required value={password} onChange={(event) => setPassword(event.target.value)}></TextInput>
-                                {/* <input placeholder="Input password" required value={password} onChange={(event) => setPassword(event.target.value)} type="text"></input> */}
+                                <TextInput label="Email "placeholder="Input email" required={true} value={email} onChange={(event) => setEmail(event.target.value)}></TextInput>
+                                <TextInput label="Password" type={"password"} placeholder="Input password" required={true} value={password} onChange={(event) => setPassword(event.target.value)}></TextInput>
+                                <div className="flex item-center justify-center">
+                                    {error?<p className="text-sm font-PlusJakartaSans text-danger">{error}</p>:null}
+                                </div>
                                 <div className="flex item-center justify-center">
                                     <Button variant="button-primary" className={"w-32 mt-4"} type={"submit"}>Login</Button>
                                 </div>
+                                
                             </form>
                         </div>
                     </div>   

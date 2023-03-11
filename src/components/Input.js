@@ -8,6 +8,7 @@ const TextInput = ({
     className,
     id,
     value,
+    required,
     type = 'text',
     onChange,
     children}) => {
@@ -23,6 +24,7 @@ const TextInput = ({
                 {label}
             </label>
             <input 
+                required={required}
                 type={type}
                 variant={variant}
                 placeholder={placeholder}
