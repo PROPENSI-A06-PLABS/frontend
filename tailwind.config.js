@@ -31,6 +31,9 @@ module.exports = {
         },
         boxShadow: {
           focus: '0 0 15px 0',
+        },
+        fontSize: {
+          // 'welcome': ['16px', 'auto'],
         }
     },
     plugins: [
