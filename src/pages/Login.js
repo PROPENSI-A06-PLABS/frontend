@@ -2,10 +2,8 @@ import React, {useState, useEffect} from "react";
 import '../App.css';
 
 import { useNavigate } from "react-router-dom";
-// import { Outlet, Link } from "react-router-dom";
 import axios from 'axios';
 
-import hantop from '../img/hantop.png';
 import plabsScreen from '../img/plabs-screen.svg';
 import plabsLogo from '../img/plabs-logo.svg';
 import { Button } from "../components/Button";
@@ -53,7 +51,6 @@ function Login() {
     }
 
     return (
-        
         <div className="grid grid-cols-2">
             <div>
                 <img className="lg:w-36 lg:mt-8 lg:ml-10 md:w-36 md:mt-8 md:ml-10 mt-4 ml-5 w-24" src={plabsLogo}></img>

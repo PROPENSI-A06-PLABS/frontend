@@ -9,6 +9,7 @@ import SystemDesign from './pages/SystemDesign';
 
 import PrivateRoute from './components/PrivateRoute';
 import Sidebar from './components/Navbar';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   useEffect(() => {
@@ -29,6 +30,13 @@ function App() {
           <Route path="/design-clean" element={
             <PrivateRoute>
               <SystemDesign/>
+            </PrivateRoute>
+          }/>
+           <Route path="/" element={
+            <PrivateRoute>
+              <Sidebar>
+                <Dashboard/>
+              </Sidebar>
             </PrivateRoute>
           }/>
       </Routes>
