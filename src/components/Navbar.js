@@ -27,7 +27,9 @@ function Navbar ({children }) {
 
     return (
         <div className="flex">
-            <div className="flex flex-col bg-black">
+            <aside className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-black">
+            {/* <aside className="h-5/5 relative overflow-y-hidden top-0 bg-black"> */}
+            {/* <aside className="relative h-5/5 overflow-y-hidden top-0 bg-black"> */}
                 <div className="flex items-center justify-center font-bold h-1/5 bg-black">
                     <h2 className="text-xl text-white font-MadeOuterSans">
                         PLABS.ID
@@ -50,14 +52,14 @@ function Navbar ({children }) {
                     <p className="text-sm text-left font-MadeOuterSans">Hello, {userName}</p>
                     <p className="text-sm text-left font-PlusJakartaSans">{userRole}</p>
                     <Button variant="button-primary" className={"w-32 mt-4"} type={"submit"}>Change Role</Button>
-                    <OutlineButton variant="button-primary" className={"w-32 mt-4"} type={"submit"} onClick={() => setShowModal(true)}>Log Out</OutlineButton>
-                    
-                    {showModal?<WarningModal label='Confirmation' description='Are you sure you want to leave?' rightbutton='Leave' leftbutton='Cancel' onClickRight={handleLogout} onClickLeft={() => setShowModal(false)}/>:null}
+                    <OutlineButton variant="button-primary" className={"w-32 mt-2"} type={"submit"} onClick={() => setShowModal(true)}>Log Out</OutlineButton>
                 </div>
-            </div>
-            <div className="w-screen">
+            </aside>
+            {/* <main className="overflow-y-auto w-screen"> */}
+            <main className="w-screen p-4 sm:ml-64">
+                {showModal?<WarningModal label='Confirmation' description='Are you sure you want to leave?' rightbutton='Leave' leftbutton='Cancel' onClickRight={handleLogout} onClickLeft={() => setShowModal(false)}/>:null}
                 {children}
-            </div>
+            </main>
         </div>
     );
 }
