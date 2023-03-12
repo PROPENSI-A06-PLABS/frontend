@@ -1,5 +1,5 @@
 import '../App.css';
-import { Button, OutlineButton,WarningModal, ConfirmModal,FileInput, DropFileInput  } from '../components';
+import { Button, OutlineButton, WarningModal, ConfirmModal, FileInput, DropFileInput, Dropdown, CheckIn } from '../components';
 import React, {useState, useEffect} from "react";
 
 function SystemDesign() {
@@ -23,6 +23,8 @@ function SystemDesign() {
         <OutlineButton variant="button-danger" onClick={() => console.log("Outline Danger Button")}>Outline Danger Button</OutlineButton>
         <FileInput title='Contract' description='SVG, PNG, JPG (MAX 4MB)' />
         <DropFileInput description='Upload photos here'/>
+        <Dropdown></Dropdown>
+        <CheckIn></CheckIn>
 
         {showModal?<ConfirmModal label='Confirmation' description='Are you sure you want to change employee status?' rightbutton='Change' leftbutton='Cancel' onClickRight={() => setShowModal(false)} onClickLeft={() => setShowModal(false)}/>:null}
         <Button variant="button-danger" onClick={() => setShowModal(true)}>Show modal</Button>

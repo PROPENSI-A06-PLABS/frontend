@@ -18,7 +18,10 @@ module.exports = {
             'darkgrey' : '#666E80',
             'grey' : '#98A1B3',
             'lightgrey' : '#E1E2E6',
-            'toscagreen' : '#9BD4D7'
+            'toscagreen' : '#9BD4D7',
+            'magic-mint' : '#B9F2D8',
+            'azureish-white' : '#DEF4EA',
+            'go-green' : '#0BB664',
           },
         },
         screens: {
@@ -26,6 +29,9 @@ module.exports = {
           'md': '960px',
           'lg': '1440px',
         },
+        boxShadow: {
+          focus: '0 0 15px 0',
+        }
     },
     plugins: [
       require('flowbite/plugin')
