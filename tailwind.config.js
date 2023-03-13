@@ -1,13 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     content: [
-      "./src/**/*.{html,js,jsx,ts,tsx}",
-      'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'
-  ],
+        "./src/**/*.{html,js,jsx,ts,tsx}",
+        "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
+    ],
     theme: {
         fontFamily: {
-          'PlusJakartaSans': ['"Plus Jakarta Sans"'],
-          'MadeOuterSans': ['"Made Outer Sans"'] // Ensure fonts with spaces have " " surrounding it.
+            PlusJakartaSans: ['"Plus Jakarta Sans"'],
+            MadeOuterSans: ['"Made Outer Sans"'], // Ensure fonts with spaces have " " surrounding it.
         },
         extend: {
           colors: {
@@ -28,20 +28,23 @@ module.exports = {
           },
         },
         screens: {
-          'sm': '576px',
-          'md': '960px',
-          'lg': '1440px',
+            sm: "576px",
+            md: "960px",
+            lg: "1440px",
         },
         boxShadow: {
-          focus: '0 0 15px 0',
+            focus: "0 0 15px 0",
         },
-        fontSize: {
-          'welcome': '16px',
-          'hours': '27px',
-          'header': '30px',
-        },
+        // ini dari google, nanti sesuain aja sama yang di figma
+        // fontSize: {
+        //     sm: "0.8rem",
+        //     base: "1rem",
+        //     xl: "1.25rem",
+        //     "2xl": "1.563rem",
+        //     "3xl": "1.953rem",
+        //     "4xl": "2.441rem",
+        //     "5xl": "3.052rem",
+        // },
     },
-    plugins: [
-      require('flowbite/plugin')
-    ],
+    plugins: [require("flowbite/plugin")],
 };

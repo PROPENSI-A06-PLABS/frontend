@@ -1,56 +1,48 @@
-import { Button, OutlineButton, CheckInButton, WarningModal, ConfirmModal,FileInput, DropFileInput  } from '../components';
-import React, {useState, useEffect} from "react";
-import '../App.css';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { Line } from 'react-chartjs-2';
-import {Chart as ChartJS, Title, Tooltip, LineElement, Legend, CategoryScale, LinearScale, PointElement} from 'chart.js';
-ChartJS.register(
-    Title, Tooltip, LineElement, Legend, CategoryScale, LinearScale, PointElement
-)
+import {
+    Button,
+    OutlineButton,
+    CheckInButton,
+    WarningModal,
+    ConfirmModal,
+    FileInput,
+    DropFileInput,
+} from "../components";
+import React, { useState, useEffect } from "react";
+import "../App.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
     // const [latitude, setLatitude] = useState(null);
     // const [longitude, setLongitude] = useState(null);
     var latitude;
     var longitude;
-    var locationURL;
-    // const [locationURL, setLocationURL] = useState("");
-    // const [error,setError] = useState();
+    const [locationURL, setLocationURL] = useState("");
+    const [error, setError] = useState();
     const userName = localStorage.getItem("userName");
-    const current = new Date();
-    const date = `${current.getDate()} ${current.getMonth()+1} ${current.getFullYear()}`;
-    const [data, setData]= useState({
-        data: {
-            labels: ["Jan", "Feb", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-            datasets:[
-                {
-                    label: "Hours Worked",
-                    data:[10, 20, 30, 42, 51, 82, 31, 59, 61, 73, 91, 58],
-                    backgroundColor: 'rgb(11, 131, 217)',
-                    borderColor: 'rgb(11, 131, 217)',
-                }
-            ],
-        },
-    });
+    // const current = new Date();
+    // const date = `${current.getDate()} ${current.getMonth()+1} ${current.getFullYear()}`;
 
     let navigate = useNavigate();
 
     const checkIn = () => {
-        if(navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(getCoordinates, handleLocationError);
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                getCoordinates,
+                handleLocationError
+            );
+            postCheckIn();
+        } else {
+            alert("Geolocation is not supported");
         }
-        else {
-            alert("Geolocation is not supported")
-        }
-    }
+    };
 
     const getCoordinates = (position) => {
         // console.log(position);
         // setLatitude(position.coords.latitude)
         // setLongitude(position.coords.longitude)
-        latitude = position.coords.latitude
-        longitude = position.coords.longitude
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
         console.log(position.coords.latitude);
         console.log(position.coords.longitude);
         console.log(latitude);
@@ -58,68 +50,51 @@ function Dashboard() {
         // if ((latitude == "") || (longitude = "")) {
         //     alert("Failed to retrieve location, please check in again")
         // }
-        // var url = "https://www.google.com/maps?q=" + latitude + "," + longitude
-        locationURL = "https://www.google.com/maps?q=" + latitude + "," + longitude
-        console.log(locationURL);
-
-        getResponse()
-    }
+        var url = "https://www.google.com/maps?q=" + latitude + "," + longitude;
+        setLocationURL(url);
+        console.log(url);
+    };
 
     const handleLocationError = (error) => {
-        switch(error.code) {
+        switch (error.code) {
             case error.PERMISSION_DENIED:
-                alert("User denied the request for Geolocation.")
+                alert("User denied the request for Geolocation.");
                 break;
             case error.POSITION_UNAVAILABLE:
-                alert("Location information is unavailable.")
+                alert("Location information is unavailable.");
                 break;
             case error.TIMEOUT:
-                alert("The request to get user location timed out.")
+                alert("The request to get user location timed out.");
                 break;
             case error.UNKNOWN_ERROR:
-                alert("An unknown error occurred.")
+                alert("An unknown error occurred.");
                 break;
         }
-    }
+    };
 
-    // const postCheckIn = async (e) => {
-    //     e.preventDefault();
-    //     // checkIn();
-        
-    //     const checkinData = {
-    //         CheckinTime: "2023-03-09T09:56:19.3436328+07:00",
-    //         Date: "2023-03-09T09:56:19.3436328+07:00",
-    //         UserId: localStorage.getItem("userId"),
-    //         Location: locationURL
-    //     }
-    //     console.log(checkinData);
-
-    //     try {
-    //         const response = await axios.post("/dashboard/check-in", checkinData);
-    //         console.log(response.data);
-    //         navigate('/')
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // }
-
-    const getResponse = () => { 
-        console.log(locationURL);
+    const postCheckIn = async (e) => {
+        e.preventDefault();
+        // checkIn();
         const checkinData = {
-            // CheckinTime: "2023-03-09T09:56:19.3436328+07:00",
-            // Date: "2023-03-09T09:56:19.3436328+07:00",
-            UserID: parseInt(localStorage.getItem("userId")),
-            // ApproverID: "",
-            Location: locationURL
-        }
+            CheckinTime: "2023-03-09T09:56:19.3436328+07:00",
+            Date: "2023-03-09T09:56:19.3436328+07:00",
+            UserId: localStorage.getItem("userId"),
+            Location: locationURL,
+        };
         console.log(checkinData);
-        axios.post('/dashboard/check-in', checkinData).then((response) => {
+
+        try {
+            const response = await axios.post(
+                "/dashboard/check-in",
+                checkinData
+            );
             console.log(response.data);
-            navigate('/')
+            navigate("/");
+        } catch (error) {
+            console.error(error);
         }
-        ).catch(error => console.error(error))
-    }
-    
+    };
+
     return (
         <div className='h-screen bg-background bg-cover'>
             <p className="text-gray-700 ml-12 mt-8 mb-5 font-MadeOuterSans text-header">Dashboard</p>
@@ -132,7 +107,7 @@ function Dashboard() {
                     </div>
                     <div className='flex items-center justify-left pl-3 pb-10'>
                         <p className="text-welcome text-black mb-5">
-                            Today is, {date}
+                            {/* Today is, {date} */}
                         </p>
                     </div>
                     <div className='flex items-center justify-center'>
@@ -151,16 +126,18 @@ function Dashboard() {
                     }   
                     */}
                 </div>
-                <div className="container justify-self-center mx-auto bg-white rounded-[25px] shadow border p-8 col-span-2 mb-5 drop-shadow-md">
-                    <div className='flex items-center justify-left pl-3 pt-3'>
-                        <p className="text-welcome text-black mb-5 font-bold">
-                            Announcement
-                        </p>
-                    </div>
-                    {/* <div className='flex items-center justify-left pl-5 pt-7'>
-                        <CheckInButton variant="button-checkin" className={""} type={"submit"} onClick={checkIn}>Check In</CheckInButton> 
-                    </div> */}
-                    {/* <div><br></br><a href={locationURL}>Redirect to Google Map</a></div> */}
+                <div className="container mx-auto bg-white rounded-[25px] shadow border p-8 m-10 col-span-2">
+                    <p className="text-welcome text-black font-bold">
+                        Welcome Back, {userName}!
+                    </p>
+                    <p className="text-welcome text-black mb-5">
+                        Today is, Monday, 27 February 2023
+                    </p>
+                    <p className="text-welcome text-black mb-5 font-bold">
+                        Start Working Today!
+                    </p>
+                    <CheckInButton variant="button-checkin" className={""} type={"submit"} onClick={checkIn}>Check In</CheckInButton> 
+                    <div><br></br><a href={locationURL}>Redirect to Google Map</a></div>
                     {/* {
                         (longitude != "") && (latitude != "") ?
                         null
@@ -186,15 +163,18 @@ function Dashboard() {
                     }   
                     */}
                 </div>
-                <div className="container mx-auto bg-white rounded-[25px] shadow border p-8 col-span-2 mb-5 drop-shadow-md">
-                    <div className='flex items-center justify-left pl-9 pb-5'>
-                        <p className="text-welcome text-black font-bold">
-                            Total Work Hours This Week (Line Chart)
-                        </p>
-                    </div>
-                    <div className='flex items-center justify-center'>
-                        <Line data={data.data} options={data.options} className="" ></Line>                   
-                    </div>
+                <div className="container mx-auto bg-white rounded-[25px] shadow border p-8 m-10 col-span-2">
+                    <p className="text-welcome text-black font-bold">
+                        Welcome Back, {userName}!
+                    </p>
+                    <p className="text-welcome text-black mb-5">
+                        Today is, Monday, 27 February 2023
+                    </p>
+                    <p className="text-welcome text-black mb-5 font-bold">
+                        Start Working Today!
+                    </p>
+                    <CheckInButton variant="button-checkin" className={""} type={"submit"} onClick={checkIn}>Check In</CheckInButton> 
+                    <div><br></br><a href={locationURL}>Redirect to Google Map</a></div>
                     {/* {
                         (longitude != "") && (latitude != "") ?
                         null
