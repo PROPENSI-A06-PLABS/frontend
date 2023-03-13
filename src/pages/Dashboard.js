@@ -9,18 +9,18 @@ function Dashboard() {
     // const [longitude, setLongitude] = useState(null);
     var latitude;
     var longitude;
-    const [locationURL, setLocationURL] = useState("");
-    const [error,setError] = useState();
+    var locationURL;
+    // const [locationURL, setLocationURL] = useState("");
+    // const [error,setError] = useState();
     const userName = localStorage.getItem("userName");
-    const current = new Date();
-    const date = `${current.getDate()} ${current.getMonth()+1} ${current.getFullYear()}`;
+    // const current = new Date();
+    // const date = `${current.getDate()} ${current.getMonth()+1} ${current.getFullYear()}`;
 
     let navigate = useNavigate();
 
     const checkIn = () => {
         if(navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(getCoordinates, handleLocationError);
-            postCheckIn();
         }
         else {
             alert("Geolocation is not supported")
@@ -40,9 +40,11 @@ function Dashboard() {
         // if ((latitude == "") || (longitude = "")) {
         //     alert("Failed to retrieve location, please check in again")
         // }
-        var url = "https://www.google.com/maps?q=" + latitude + "," + longitude
-        setLocationURL(url)
-        console.log(url);
+        // var url = "https://www.google.com/maps?q=" + latitude + "," + longitude
+        locationURL = "https://www.google.com/maps?q=" + latitude + "," + longitude
+        console.log(locationURL);
+
+        getResponse()
     }
 
     const handleLocationError = (error) => {
@@ -62,24 +64,42 @@ function Dashboard() {
         }
     }
 
-    const postCheckIn = async (e) => {
-        e.preventDefault();
-        // checkIn();
+    // const postCheckIn = async (e) => {
+    //     e.preventDefault();
+    //     // checkIn();
+        
+    //     const checkinData = {
+    //         CheckinTime: "2023-03-09T09:56:19.3436328+07:00",
+    //         Date: "2023-03-09T09:56:19.3436328+07:00",
+    //         UserId: localStorage.getItem("userId"),
+    //         Location: locationURL
+    //     }
+    //     console.log(checkinData);
+
+    //     try {
+    //         const response = await axios.post("/dashboard/check-in", checkinData);
+    //         console.log(response.data);
+    //         navigate('/')
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // }
+
+    const getResponse = () => { 
+        console.log(locationURL);
         const checkinData = {
-            CheckinTime: "2023-03-09T09:56:19.3436328+07:00",
-            Date: "2023-03-09T09:56:19.3436328+07:00",
-            UserId: localStorage.getItem("userId"),
+            // CheckinTime: "2023-03-09T09:56:19.3436328+07:00",
+            // Date: "2023-03-09T09:56:19.3436328+07:00",
+            UserID: parseInt(localStorage.getItem("userId")),
+            // ApproverID: "",
             Location: locationURL
         }
         console.log(checkinData);
-
-        try {
-            const response = await axios.post("/dashboard/check-in", checkinData);
+        axios.post('/dashboard/check-in', checkinData).then((response) => {
             console.log(response.data);
             navigate('/')
-        } catch (error) {
-            console.error(error);
         }
+        ).catch(error => console.error(error))
     }
     
     return (

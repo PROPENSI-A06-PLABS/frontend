@@ -13,7 +13,7 @@ import { Label } from "flowbite-react";
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [user, setUser] = useState("");
+    // const [user, setUser] = useState("");
     const [error,setError]=useState();
 
     let navigate = useNavigate();
@@ -39,11 +39,13 @@ function Login() {
             // const response = await axios.post('/login', userData, { withCredentials: true });
             const response = await axios.post('/login', userData);
             console.log(response.data);
-            localStorage.setItem("token", response.data.token)
-            localStorage.setItem("userName", response.data.user.Name)
-            localStorage.setItem("userRole", response.data.user.Role)
-            localStorage.setItem("userId", response.data.user.Id)
-            navigate('/design')
+            localStorage.setItem("token", response.data.token);
+            localStorage.setItem("userName", response.data.user.Name);
+            localStorage.setItem("userRole", response.data.user.Role);
+            localStorage.setItem("userId", response.data.user.Id);
+            // axios.defaults.headers.common['Authorization'] = "Bearer " + response.data.token;
+            axios.defaults.headers.common['Authorization'] = "Bearer " + response.data.token;
+            navigate('/');
         } catch (error) {
             setError('Invalid Username or Password!')
             console.error(error);
@@ -57,7 +59,6 @@ function Login() {
                 <div className="md:justify-center flex items-center md:h-4/6">
                     <div className="grid grid-flow-row auto-rows-max">
                         <h1 className="text-2xl font-MadeOuterSans">Good to see you again!</h1>
-
                         <div className="mt-10">
                             <form onSubmit={postLogin}>
                                 <TextInput label="Email "placeholder="Input email" required={true} value={email} onChange={(event) => setEmail(event.target.value)}></TextInput>
