@@ -7,6 +7,7 @@ import { WarningModal } from "./Modals";
 import { BsChevronRight } from "react-icons/bs";
 import { BiUser } from "react-icons/bi";
 import logo from "../../src/logo-plabs-full.png";
+import axios from "axios";
 
 function Navbar({ children }) {
     let navigate = useNavigate();
