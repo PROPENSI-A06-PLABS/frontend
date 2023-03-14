@@ -21,6 +21,7 @@ function Navbar ({children }) {
     ];
     
     const handleLogout = () => {
+        delete axios.defaults.headers.common["Authorization"];
         localStorage.clear();
         navigate('/login');
     }

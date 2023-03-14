@@ -13,11 +13,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
-    // const [latitude, setLatitude] = useState(null);
-    // const [longitude, setLongitude] = useState(null);
     var latitude;
     var longitude;
-    const [locationURL, setLocationURL] = useState("");
+    var locationURL;
     const [error, setError] = useState();
     const userName = localStorage.getItem("userName");
     // const current = new Date();
@@ -31,28 +29,21 @@ function Dashboard() {
                 getCoordinates,
                 handleLocationError
             );
-            postCheckIn();
         } else {
             alert("Geolocation is not supported");
         }
     };
 
     const getCoordinates = (position) => {
-        // console.log(position);
-        // setLatitude(position.coords.latitude)
-        // setLongitude(position.coords.longitude)
         latitude = position.coords.latitude;
         longitude = position.coords.longitude;
         console.log(position.coords.latitude);
         console.log(position.coords.longitude);
         console.log(latitude);
         console.log(longitude);
-        // if ((latitude == "") || (longitude = "")) {
-        //     alert("Failed to retrieve location, please check in again")
-        // }
-        var url = "https://www.google.com/maps?q=" + latitude + "," + longitude;
-        setLocationURL(url);
-        console.log(url);
+        locationURL = "https://www.google.com/maps?q=" + latitude + "," + longitude
+        console.log(locationURL);
+        postCheckIn()
     };
 
     const handleLocationError = (error) => {
@@ -72,28 +63,17 @@ function Dashboard() {
         }
     };
 
-    const postCheckIn = async (e) => {
-        e.preventDefault();
-        // checkIn();
+    const postCheckIn = () => { 
+        console.log(locationURL);
         const checkinData = {
-            CheckinTime: "2023-03-09T09:56:19.3436328+07:00",
-            Date: "2023-03-09T09:56:19.3436328+07:00",
-            UserId: localStorage.getItem("userId"),
-            Location: locationURL,
-        };
-        console.log(checkinData);
-
-        try {
-            const response = await axios.post(
-                "/dashboard/check-in",
-                checkinData
-            );
-            console.log(response.data);
-            navigate("/");
-        } catch (error) {
-            console.error(error);
+            UserID: parseInt(localStorage.getItem("userId")),
+            Location: locationURL
         }
-    };
+        axios.post('/dashboard/check-in', checkinData).then((response) => {
+            console.log(response.data);
+            navigate('/')
+        }).catch(error => console.error(error))
+    }
 
     return (
         <div className='h-screen bg-background bg-cover'>
