@@ -43,7 +43,9 @@ function Login() {
             localStorage.setItem("userName", response.data.user.Name);
             localStorage.setItem("userRole", response.data.user.Role);
             localStorage.setItem("userId", response.data.user.Id);
-            navigate("/design");
+            // axios.defaults.headers.common['Authorization'] = "Bearer " + response.data.token;
+            axios.defaults.headers.common['Authorization'] = "Bearer " + response.data.token;
+            navigate('/');
         } catch (error) {
             setError("Invalid Username or Password!");
             console.error(error);
