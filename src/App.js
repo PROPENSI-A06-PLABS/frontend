@@ -1,15 +1,11 @@
 import logo from "./logo-plabs-full.png";
 import "./App.css";
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Login, UserManagement, SystemDesign, Dashboard } from './pages/index';
 
-import Login from "./pages/Login";
-import SystemDesign from "./pages/SystemDesign";
-
-import PrivateRoute from "./components/PrivateRoute";
-import Sidebar from "./components/Navbar";
-import Dashboard from "./pages/Dashboard";
+import PrivateRoute from "./components/PrivateRoute.jsx";
+import Sidebar from "./components/Navbar.jsx";
 
 function App() {
     useEffect(() => {
