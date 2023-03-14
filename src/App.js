@@ -4,8 +4,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useState, useEffect } from "react";
 
-import Login from './pages/Login';
-import SystemDesign from './pages/SystemDesign';
+import { Login, UserManagement, SystemDesign } from './pages/index';
 
 import PrivateRoute from './components/PrivateRoute';
 import Sidebar from './components/Navbar';
@@ -18,6 +17,10 @@ function App() {
   return (
     <div>
       <Routes>
+          <Route path="/" element={
+            <Sidebar>
+              <UserManagement/>
+            </Sidebar>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/design" element={
             <PrivateRoute>

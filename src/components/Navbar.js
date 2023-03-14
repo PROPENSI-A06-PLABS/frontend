@@ -56,7 +56,7 @@ function Navbar ({children }) {
                 </div>
             </aside>
             {/* <main className="overflow-y-auto w-screen"> */}
-            <main className="w-screen p-4 sm:ml-64">
+            <main className="w-screen p-4 sm:ml-64 bg-primarywhite">
                 {showModal?<WarningModal label='Confirmation' description='Are you sure you want to leave?' rightbutton='Leave' leftbutton='Cancel' onClickRight={handleLogout} onClickLeft={() => setShowModal(false)}/>:null}
                 {children}
             </main>
