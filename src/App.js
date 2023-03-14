@@ -4,8 +4,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Login, UserManagement, SystemDesign, Dashboard } from './pages/index';
 
-import PrivateRoute from "./components/PrivateRoute";
-import Sidebar from "./components/Navbar";
+import PrivateRoute from "./components/PrivateRoute.jsx";
+import Sidebar from "./components/Navbar.jsx";
 
 function App() {
     useEffect(() => {
