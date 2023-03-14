@@ -55,5 +55,31 @@ const OutlineButton = ({
         )
 }
 
-export {Button, OutlineButton};
+const CheckInButton = ({
+    type = "button",
+    variant = "button-checkin",
+    className,
+    id,
+    onClick,
+    children}) => {
+        if (variant == "button-checkin") {
+            variant = "bg-azureish-white hover:border-magic-mint text-go-green hover:border-4"
+        }
+        else if (variant == "button-checkout") {
+            variant = "bg-danger hover:border-candy-pink text-primarywhite hover:border-4"
+        }
+        return( 
+        // <div className="button-container">   
+            <button 
+                type={type}
+                className={`${className} ${variant} w-60 h-60 rounded-full text-xl font-bold hover:shadow-focus`} 
+                onClick={onClick}
+                id={id}
+                >{children}
+            </button>  
+        // </div> 
+        )
+}
+
+export {Button, OutlineButton, CheckInButton};
 

@@ -1,13 +1,11 @@
-import React, {useState, useEffect} from "react";
-import '../App.css';
+import React, { useState, useEffect } from "react";
+import "../App.css";
 
 import { useNavigate } from "react-router-dom";
-// import { Outlet, Link } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 
-import hantop from '../img/hantop.png';
-import plabsScreen from '../img/plabs-screen.svg';
-import plabsLogo from '../img/plabs-logo.svg';
+import plabsScreen from "../img/plabs-screen.svg";
+import plabsLogo from "../img/plabs-logo.svg";
 import { Button } from "../components/Button";
 import { TextInput } from "../components/Input";
 import { Label } from "flowbite-react";
@@ -16,7 +14,7 @@ function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [user, setUser] = useState("");
-    const [error,setError]=useState();
+    const [error, setError] = useState();
 
     let navigate = useNavigate();
 
@@ -33,56 +31,82 @@ function Login() {
 
         const userData = {
             email: email,
-            password: password
-        }
+            password: password,
+        };
         console.log(userData);
 
         try {
             // const response = await axios.post('/login', userData, { withCredentials: true });
-            const response = await axios.post('/login', userData);
+            const response = await axios.post("/login", userData);
             console.log(response.data);
-            localStorage.setItem("token", response.data.token)
-            localStorage.setItem("userName", response.data.user.Name)
-            localStorage.setItem("userRole", response.data.user.Role)
-            localStorage.setItem("userId", response.data.user.Id)
-            navigate('/design')
+            localStorage.setItem("token", response.data.token);
+            localStorage.setItem("userName", response.data.user.Name);
+            localStorage.setItem("userRole", response.data.user.Role);
+            localStorage.setItem("userId", response.data.user.Id);
+            navigate("/design");
         } catch (error) {
-            setError('Invalid Username or Password!')
+            setError("Invalid Username or Password!");
             console.error(error);
         }
-    }
+    };
 
     return (
-        
-        <div className="grid grid-cols-2">
-            <div>
-                <img className="lg:w-36 lg:mt-8 lg:ml-10 md:w-36 md:mt-8 md:ml-10 mt-4 ml-5 w-24" src={plabsLogo}></img>
-                <div className="md:justify-center flex items-center md:h-4/6">
+        <div className="flex justify-end">
+            <div className="w-screen">
+                <img
+                    className="lg:w-36 lg:mt-8 lg:ml-10 md:w-36 md:mt-8 md:ml-10 mt-4 ml-5 w-24"
+                    src={plabsLogo}
+                ></img>
+                <div className="md:justify-center flex items-center md:h-5/6 ">
                     <div className="grid grid-flow-row auto-rows-max">
-                        <h1 className="text-2xl font-MadeOuterSans">Good to see you again!</h1>
-
+                        <h1 className="font-MadeOuterSans text-3xl">
+                            Good to see you again!
+                        </h1>
                         <div className="mt-10">
                             <form onSubmit={postLogin}>
-                                <TextInput label="Email "placeholder="Input email" required={true} value={email} onChange={(event) => setEmail(event.target.value)}></TextInput>
-                                <TextInput label="Password" type={"password"} placeholder="Input password" required={true} value={password} onChange={(event) => setPassword(event.target.value)}></TextInput>
+                                <TextInput
+                                    label="Email "
+                                    placeholder="Input email"
+                                    required={true}
+                                    value={email}
+                                    onChange={(event) =>
+                                        setEmail(event.target.value)
+                                    }
+                                ></TextInput>
+                                <TextInput
+                                    label="Password"
+                                    type={"password"}
+                                    placeholder="Input password"
+                                    required={true}
+                                    value={password}
+                                    onChange={(event) =>
+                                        setPassword(event.target.value)
+                                    }
+                                ></TextInput>
                                 <div className="flex item-center justify-center">
-                                    {error?<p className="text-sm font-PlusJakartaSans text-danger">{error}</p>:null}
+                                    {error ? (
+                                        <p className="text-sm font-PlusJakartaSans text-danger">
+                                            {error}
+                                        </p>
+                                    ) : null}
                                 </div>
                                 <div className="flex item-center justify-center">
-                                    <Button variant="button-primary" className={"w-32 mt-4"} type={"submit"}>Login</Button>
+                                    <Button
+                                        variant="button-primary"
+                                        className={"w-32 mt-4"}
+                                        type={"submit"}
+                                    >
+                                        Login
+                                    </Button>
                                 </div>
-                                
                             </form>
                         </div>
-                    </div>   
+                    </div>
                 </div>
             </div>
-            {/* <div class="bg-contain bg-center" style={{backgroundImage: `url(${plabsScreen})`}}></div> */}
-            {/* <div className="h-screen w-screen"> */}
-                <img className="h-screen w-screen" src={plabsScreen}></img>
-            {/* </div> */}
+            <img className="h-screen" src={plabsScreen}></img>
         </div>
-    );   
+    );
 }
 
 export default Login;

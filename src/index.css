@@ -44,3 +44,7 @@ button {
 body {
   background-color: white;
 }
+
+.no-scrollbar::-webkit-scrollbar{
+    display: none;
+}
